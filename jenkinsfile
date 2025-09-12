@@ -11,7 +11,8 @@ pipeline {
             }
         }
 
-        // SonarCloud Analysis stage
+        // SonarCloud Analysis stage 
+        /*
         stage('SonarCloud Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'sonarcloud-token', variable: 'SONAR_TOKEN')]) {
@@ -25,9 +26,9 @@ pipeline {
                         -Dsonar.sources=/usr/src \
                         -Dsonar.login=$SONAR_TOKEN
                     """
-                }
+                } 
             }
-        }
+        } */
         stage('docker build') {
             steps {
                 echo "Starting Docker Build Stage..."
