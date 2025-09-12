@@ -2,13 +2,27 @@ pipeline {
     agent any
 
     stages {
+        // Build stage
         stage('Build') {
             steps {
                 echo "Starting Build Stage..."
-                
                 sh 'npm install'
-                
                 echo "Build stage completed successfully!"
+            }
+        }
+
+        // SonarCloud Analysis stage
+        stage('SonarCloud Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'sonarcloud-token', variable: 'SONAR_TOKEN')]) {
+                    sh """
+                    sonar-scanner \
+                        -Dsonar.organization=sudharshanreddy222 \
+                        -Dsonar.projectKey=sudharshanreddy222_task \
+                        -Dsonar.sources=. \
+                        -Dsonar.login=$SONAR_TOKEN
+                    """
+                }
             }
         }
     }
