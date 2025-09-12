@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source                = "./modules-vpc"
+  source                = "./module-vpc"
   cluster_name          = var.cluster_name
   vpc_cidr              = var.vpc_cidr_block
   availability_zones    = var.availability_zones
@@ -28,7 +28,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source         = "./modules-eks"
+  source         = "./module-eks"
   cluster_name   = var.cluster_name
   vpc_id         = module.vpc.vpc_id
   subnet_ids     = concat(
