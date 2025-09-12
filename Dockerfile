@@ -3,11 +3,10 @@ FROM node:18
 
 WORKDIR /usr/src
 
-COPY package*.json package-lock.json./
+COPY package*.json package-lock.json ./
 
 
 RUN npm install
-
 COPY . .
 
 EXPOSE 3000
