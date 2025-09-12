@@ -5,7 +5,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   description = "Version of the EKS cluster"
   type        = string
-  default     = "1.27"
+  default     = "1.32"
 }
 variable "vpc_id" {
   description = "ID of the VPC where the EKS cluster will be created"
