@@ -1,31 +1,19 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo "Starting Node.js build..."
-                
-                // Optional: check versions
-                sh 'node -v'
-                sh 'npm -v'
-                
-                // Install dependencies
-                sh 'npm install'
-                
-                
-                // Build project
-                sh 'npm run build'
-            }
-        }
+stage('Build') {
+    steps {
+        echo "Starting Build Stage..."
+        
+        sh 'npm install'
+        
+        echo "Build stage completed successfully!"
     }
-
-    post {
-        success {
-            echo "Build completed successfully!"
-        }
-        failure {
-            echo "Build failed!"
-        }
+}
+stage('Test') {
+    steps {
+        echo "Starting Test Stage..."
+        
+        // Run tests
+        sh 'npm test'
+        
+        echo "Test stage completed successfully!"
     }
 }
