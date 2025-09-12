@@ -1,9 +1,33 @@
-stage('Build') {
-    steps {
-        echo "Starting Node.js build..."
-        
-        sh 'npm install'
-        sh 'npm test'
-        sh 'npm run build'
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Starting Node.js build..."
+                
+                // Optional: check versions
+                sh 'node -v'
+                sh 'npm -v'
+                
+                // Install dependencies
+                sh 'npm install'
+                
+                // Run tests
+                sh 'npm test'
+                
+                // Build project
+                sh 'npm run build'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Build completed successfully!"
+        }
+        failure {
+            echo "Build failed!"
+        }
     }
 }
