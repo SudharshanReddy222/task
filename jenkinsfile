@@ -52,6 +52,7 @@ stage('Deploy to EKS') {
         script {
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
                 sh """
+                docker run --rm -v \$HOME/.kube:/root/.kube -v \$HOME/.aws:/root/.aws bitnami/kubectl:latest \
                 aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
                 kubectl apply -f kube-manifest/
                 """
