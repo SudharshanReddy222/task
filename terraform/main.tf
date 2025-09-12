@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "terraform-state-bucket-93474676"
+    bucket         = "terraform-state-bucket-934746769"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform_state_lock-1"
@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source                = "./modules/vpc"
+  source                = "./modules-vpc"
   cluster_name          = var.cluster_name
   vpc_cidr              = var.vpc_cidr_block
   availability_zones    = var.availability_zones
@@ -28,7 +28,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source         = "./modules/eks"
+  source         = "./modules-eks"
   cluster_name   = var.cluster_name
   vpc_id         = module.vpc.vpc_id
   subnet_ids     = concat(
