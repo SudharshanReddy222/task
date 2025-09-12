@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Push to ECR') {
     steps {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ecr-creds']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
             sh """
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 850550315147.dkr.ecr.us-east-1.amazonaws.com
                 docker tag my-node-app:latest 850550315147.dkr.ecr.us-east-1.amazonaws.com/node.js-task:latest
