@@ -28,6 +28,13 @@ pipeline {
                 }
             }
         }
+        stage('docker build') {
+            steps {
+                echo "Starting Docker Build Stage..."
+                sh 'docker build -t my-node-app .'
+                echo "Docker Build stage completed successfully!"
+            }
+        }
     }
 
     post {
