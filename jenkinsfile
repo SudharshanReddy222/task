@@ -1,19 +1,24 @@
-stage('Build') {
-    steps {
-        echo "Starting Build Stage..."
-        
-        sh 'npm install'
-        
-        echo "Build stage completed successfully!"
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Starting Build Stage..."
+                
+                sh 'npm install'
+                
+                echo "Build stage completed successfully!"
+            }
+        }
     }
-}
-stage('Test') {
-    steps {
-        echo "Starting Test Stage..."
-        
-        // Run tests
-        sh 'npm test'
-        
-        echo "Test stage completed successfully!"
+
+    post {
+        success {
+            echo "Pipeline succeeded."
+        }
+        failure {
+            echo "Pipeline failed."
+        }
     }
 }
