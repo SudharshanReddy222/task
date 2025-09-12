@@ -47,6 +47,18 @@ pipeline {
         }
     }
 }
+stage('Deploy to EKS') {
+    steps {
+        script {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+                sh """
+                aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
+                kubectl apply -f kube-manifest/
+                """
+            }
+        }
+    }
+}
 
 
     }
