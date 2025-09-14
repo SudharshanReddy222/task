@@ -26,13 +26,13 @@ npm start
 
 The server will start and display:
 
-Server running on http:54.91.162.247//:3000
+Server running on http:54.91.162.247//:30152
 
 Usage
 
 Once the server is running, open your web browser and navigate to:
 
-http:54.91.162.247//:3000
+http:54.91.162.247//:30152
 
 
 Project Structure
