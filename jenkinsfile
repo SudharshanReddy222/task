@@ -12,7 +12,7 @@ pipeline {
         }
 
         // SonarCloud Analysis stage 
-        /*
+        
         stage('SonarCloud Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'sonarcloud-token', variable: 'SONAR_TOKEN')]) {
@@ -28,7 +28,7 @@ pipeline {
                     """
                 } 
             }
-        } */
+        } 
         stage('docker build') {
             steps {
                 echo "Starting Docker Build Stage..."
