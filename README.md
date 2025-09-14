@@ -125,6 +125,9 @@ Challenge: Jenkins user didn’t have access to run kubectl commands.
 
 Solution: Configured aws-auth ConfigMap to map jenkins-user IAM role to Kubernetes system:masters.
 
+### Jenkins Pipeline Stuck due to Low Disk Space 
+ During pipeline execution, the Jenkins jobs were frequently getting stuck because the disk space on the Jenkins server was running low. To troubleshoot, I used commands like top to check resource usage and df -h to identify disk consumption. After identifying the issue, I increased the disk size, which resolved the problem and allowed the pipelines to run smoothly.
+
 🚀 Possible Improvements if Given More Time
 
 External Access via ALB + Route 53 – Configure AWS ALB Ingress Controller and Route 53 DNS mapping for secure, scalable external access to the application.
@@ -136,3 +139,5 @@ Prometheus & Grafana – Metrics collection and real-time visualization.
 ELK Stack (Elasticsearch, Logstash, Kibana) – Centralized log aggregation and advanced search.
 
 Jaeger – Distributed tracing to track request flows across microservices.
+
+Security & Vulnerability Scanning – Implement Snyk to detect vulnerabilities in dependencies and container images, and integrate OWASP ZAP scans covering the top 5 principles (Injection, Broken Authentication, Sensitive Data Exposure, XML External Entities, Security Misconfiguration).
