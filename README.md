@@ -45,7 +45,7 @@ Technical Details
 
 Framework: Express.js
 
-Port: 3000
+Port: 30152
 
 Endpoint: GET / - serves the logo image
 
